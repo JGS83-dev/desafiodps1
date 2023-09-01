@@ -39,11 +39,13 @@ const MainComponent = () => {
           setPrecioFinal(25);
         }
         // console.log("Precio con descuento", precioFinal);
-      } else if (mes > 9) {
-        setDescuentoAplicado(53);
-        setPrecioFinal(25 - 25 * (53 / 100));
       }
     });
+
+    if (mes > 9) {
+      setDescuentoAplicado(53);
+      setPrecioFinal(25 - 25 * (53 / 100));
+    }
 
     //Debug info del usuario
     // console.log('Nombre:', nombre)
