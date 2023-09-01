@@ -43,8 +43,15 @@ const MainComponent = () => {
     });
 
     //Debug info del usuario
-    console.log('Nombre:',nombre)
-    console.log('Apellido:',apellido)
+    console.log('Nombre:', nombre)
+    console.log('Apellido:', apellido)
+    console.log('Meses:', meses)
+    console.log('Descuento:', descuentoAplicado)
+  };
+  const preventMinus = (e) => {
+    if (e.code === 'Minus') {
+      e.preventDefault();
+    }
   };
 
   return (
@@ -62,11 +69,11 @@ const MainComponent = () => {
         }}
       >
         <Form.Item label="Nombre" required>
-          <Input onChange={(e) => setNombre(e.target.value)}/>
+          <Input onChange={(e) => setNombre(e.target.value)} />
         </Form.Item>
 
         <Form.Item label="Apellido" required>
-          <Input onChange={(e) => setApellido(e.target.value)}/>
+          <Input onChange={(e) => setApellido(e.target.value)} />
         </Form.Item>
         <Form.Item label="Idioma" required>
           <Select>
@@ -77,7 +84,11 @@ const MainComponent = () => {
         </Form.Item>
 
         <Form.Item label="Meses: " required>
-          <InputNumber onChange={(e) => setMeses(e)} min='1'/>
+          <InputNumber min={1} onChange={(e) => setMeses(e)} onKeyPress={(event) => {
+            if (!/[0-9]/.test(event.key)) {
+              event.preventDefault();
+            }
+          }} />
         </Form.Item>
 
         <Form.Item label=" ">
@@ -85,7 +96,7 @@ const MainComponent = () => {
         </Form.Item>
         <Form.Item label="Detalles:">
           <Input placeholder={'Descuento: ' + descuentoAplicado + ' %'} disabled />
-          <Input placeholder={'Preio a pagar: $' +precioFinal} disabled />
+          <Input placeholder={'Preio a pagar: $' + precioFinal} disabled />
         </Form.Item>
       </Form>
     </>
