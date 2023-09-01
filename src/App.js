@@ -39,17 +39,19 @@ const MainComponent = () => {
           setPrecioFinal(25);
         }
         // console.log("Precio con descuento", precioFinal);
+      } else if (mes > 9) {
+        setDescuentoAplicado(53);
+        setPrecioFinal(25 - 25 * (53 / 100));
       }
     });
 
     //Debug info del usuario
-    console.log('Nombre:', nombre)
-    console.log('Apellido:', apellido)
-    console.log('Meses:', meses)
-    console.log('Descuento:', descuentoAplicado)
-    console.log('Curso:', cursoSeleccionado)
+    // console.log('Nombre:', nombre)
+    // console.log('Apellido:', apellido)
+    // console.log('Meses:', meses)
+    // console.log('Descuento:', descuentoAplicado)
+    // console.log('Curso:', cursoSeleccionado)
   };
-  
 
   return (
     <>
@@ -73,32 +75,44 @@ const MainComponent = () => {
           <Input onChange={(e) => setApellido(e.target.value)} />
         </Form.Item>
         <Form.Item label="Idioma" required>
-          <Select onChange={(e)=>{
-            setCursoSeleccionado(e)
-          }}>
-          <Select.Option value='Ingles'>Inglés</Select.Option>
-          <Select.Option value='Frances'>Frances</Select.Option>
+          <Select
+            onChange={(e) => {
+              setCursoSeleccionado(e);
+            }}
+          >
+            <Select.Option value="Ingles">Inglés</Select.Option>
+            <Select.Option value="Frances">Frances</Select.Option>
           </Select>
         </Form.Item>
 
         <Form.Item label="Meses: " required>
-          <InputNumber min={1} onChange={(e) => setMeses(e)} onKeyPress={(event) => {
-            if (!/[0-9]/.test(event.key)) {
-              event.preventDefault();
-            }
-          }} />
+          <InputNumber
+            min={1}
+            onChange={(e) => setMeses(e)}
+            onKeyPress={(event) => {
+              if (!/[0-9]/.test(event.key)) {
+                event.preventDefault();
+              }
+            }}
+          />
         </Form.Item>
 
         <Form.Item label=" ">
           <Button onClick={() => CalcularDescuento(meses)}>Calcular</Button>
         </Form.Item>
         <Form.Item label="Detalles:">
-          <Input placeholder={'Nombre: ' + nombre} disabled />
-          <Input placeholder={'Apellidos: ' + apellido} disabled />
-          <Input placeholder={'Curso seleccionado: ' + cursoSeleccionado} disabled />
-          <Input placeholder={'Cantidad de meses: ' + meses} disabled />
-          <Input placeholder={'Descuento: ' + descuentoAplicado + ' %'} disabled />
-          <Input placeholder={'Preio a pagar: $' + precioFinal} disabled />
+          <Input placeholder={"Nombre: " + nombre} disabled />
+          <Input placeholder={"Apellidos: " + apellido} disabled />
+          <Input
+            placeholder={"Curso seleccionado: " + cursoSeleccionado}
+            disabled
+          />
+          <Input placeholder={"Cantidad de meses: " + meses} disabled />
+          <Input
+            placeholder={"Descuento: " + descuentoAplicado + " %"}
+            disabled
+          />
+          <Input placeholder={"Preio a pagar: $" + precioFinal} disabled />
         </Form.Item>
       </Form>
     </>
