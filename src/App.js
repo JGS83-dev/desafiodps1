@@ -91,6 +91,10 @@ const MainComponent = () => {
           <Button onClick={() => CalcularDescuento(meses)}>Calcular</Button>
         </Form.Item>
         <Form.Item label="Detalles:">
+          <Input placeholder={'Nombre: ' + nombre} disabled />
+          <Input placeholder={'Apellidos: ' + apellido} disabled />
+          <Input placeholder={'Curso seleccionado: ' + cursoSeleccionado} disabled />
+          <Input placeholder={'Cantidad de meses: ' + meses} disabled />
           <Input placeholder={'Descuento: ' + descuentoAplicado + ' %'} disabled />
           <Input placeholder={'Preio a pagar: $' + precioFinal} disabled />
         </Form.Item>
