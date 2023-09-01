@@ -26,19 +26,19 @@ const MainComponent = () => {
   const selectIdiomasDisponibles = ["ingles", "frances"];
 
   const CalcularDescuento = (mes) => {
-    console.log("Valor enviado:", mes);
+    // console.log("Valor enviado:", mes);
     descuentos.forEach((e) => {
       // console.log("Limite superior", e.inferior);
       // console.log("Limite inferior", e.inferior);
       if (mes >= e.inferior && mes <= e.superior) {
         if (e.descuento > 0) {
           setDescuentoAplicado(e.descuento);
-          setPrecioFinal(25 + 25 * (e.descuento / 100));
+          setPrecioFinal(25 - 25 * (e.descuento / 100));
         } else {
           setDescuentoAplicado(0);
           setPrecioFinal(25);
         }
-        console.log("Precio con descuento", precioFinal);
+        // console.log("Precio con descuento", precioFinal);
       }
     });
 
@@ -84,8 +84,8 @@ const MainComponent = () => {
           <Button onClick={() => CalcularDescuento(meses)}>Calcular</Button>
         </Form.Item>
         <Form.Item label="Detalles:">
-          <Input placeholder="Descuento" disabled />
-          <Input placeholder="Total a pagar" disabled />
+          <Input placeholder={'Descuento: ' + descuentoAplicado + ' %'} disabled />
+          <Input placeholder={'Preio a pagar: $' +precioFinal} disabled />
         </Form.Item>
       </Form>
     </>
