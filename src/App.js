@@ -64,7 +64,9 @@ const MainComponent = () => {
         </Form.Item>
 
         <Form.Item label="Meses: " required>
-          <InputNumber />
+          <InputNumber onChange={(e) => {
+            console.log(e)
+          }} />
         </Form.Item>
 
         <Form.Item label=" ">
