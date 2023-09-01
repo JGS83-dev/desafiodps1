@@ -1,5 +1,6 @@
 import { PlusOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
+import { descuentos } from './utils/descuentos';
 import {
   Button,
   Cascader,
@@ -23,8 +24,28 @@ const normFile = (e) => {
   }
   return e?.fileList;
 };
-const FormDisabledDemo = () => {
+const MainComponent = () => {
   const [componentDisabled, setComponentDisabled] = useState(false);
+
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
+  const [cursoSeleccionado, setCursoSeleccionado] = useState("");
+  const [precioFinal, setPrecioFinal] = useState("");
+
+  const selectIdiomasDisponibles = ["ingles", "frances"];
+
+  const CalcularDescuento = () => {
+    let meses = 1;
+    descuentos.forEach((e) => {
+      if (e.inferior <= meses && e.superior >= meses) {
+        setPrecioFinal(25 + 25 * (e.descuento / 100));
+        console.log(precioFinal);
+      }
+    });
+  };
+
+
+
   return (
     <>
      
@@ -72,4 +93,4 @@ const FormDisabledDemo = () => {
     </>
   );
 };
-export default () => <FormDisabledDemo />;
+export default () => <MainComponent />;
