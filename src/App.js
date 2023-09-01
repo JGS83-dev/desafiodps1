@@ -47,6 +47,7 @@ const MainComponent = () => {
     console.log('Apellido:', apellido)
     console.log('Meses:', meses)
     console.log('Descuento:', descuentoAplicado)
+    console.log('Curso:', cursoSeleccionado)
   };
   
 
@@ -72,10 +73,11 @@ const MainComponent = () => {
           <Input onChange={(e) => setApellido(e.target.value)} />
         </Form.Item>
         <Form.Item label="Idioma" required>
-          <Select>
-            {selectIdiomasDisponibles.forEach((element) => {
-              <Select.Option value={element}>{element}</Select.Option>;
-            })}
+          <Select onChange={(e)=>{
+            setCursoSeleccionado(e)
+          }}>
+          <Select.Option value='Ingles'>Inglés</Select.Option>
+          <Select.Option value='Frances'>Frances</Select.Option>
           </Select>
         </Form.Item>
 
