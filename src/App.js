@@ -1,7 +1,17 @@
 import { PlusOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
 import { descuentos } from "./utils/descuentos";
-import { Button, Form, Input, InputNumber, Select, Col, Divider, Row, Space } from "antd";
+import {
+  Button,
+  Form,
+  Input,
+  InputNumber,
+  Select,
+  Col,
+  Divider,
+  Row,
+  Space,
+} from "antd";
 
 const MainComponent = () => {
   const [componentDisabled, setComponentDisabled] = useState(false);
@@ -9,24 +19,26 @@ const MainComponent = () => {
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [cursoSeleccionado, setCursoSeleccionado] = useState("");
+  const [meses, setMeses] = useState(0);
   const [precioFinal, setPrecioFinal] = useState(0);
   const [descuentoAplicado, setDescuentoAplicado] = useState(0);
 
   const selectIdiomasDisponibles = ["ingles", "frances"];
 
-  const CalcularDescuento = (meses) => {
+  const CalcularDescuento = (mes) => {
+    console.log("Valor enviado:", mes);
     descuentos.forEach((e) => {
-      console.log('Limite superior', e.inferior);
-      console.log('Limite inferior', e.inferior);
-      if (meses >= e.inferior && meses <= e.superior) {
+      // console.log("Limite superior", e.inferior);
+      // console.log("Limite inferior", e.inferior);
+      if (mes >= e.inferior && mes <= e.superior) {
         if (e.descuento > 0) {
-          setDescuentoAplicado(e.descuento)
+          setDescuentoAplicado(e.descuento);
           setPrecioFinal(25 + 25 * (e.descuento / 100));
         } else {
-          setDescuentoAplicado(0)
+          setDescuentoAplicado(0);
           setPrecioFinal(25);
         }
-        console.log('Precio con descuento', precioFinal);
+        console.log("Precio con descuento", precioFinal);
       }
     });
   };
@@ -34,7 +46,6 @@ const MainComponent = () => {
   return (
     <>
       <Form
-
         labelCol={{
           span: 12,
         }}
@@ -46,8 +57,6 @@ const MainComponent = () => {
           maxWidth: 900,
         }}
       >
-
-
         <Form.Item label="Nombre" required>
           <Input />
         </Form.Item>
@@ -64,13 +73,11 @@ const MainComponent = () => {
         </Form.Item>
 
         <Form.Item label="Meses: " required>
-          <InputNumber onChange={(e) => {
-            console.log(e)
-          }} />
+          <InputNumber onChange={(e) => setMeses(e)} />
         </Form.Item>
 
         <Form.Item label=" ">
-          <Button onClick={() => CalcularDescuento(2)}>Calcular</Button>
+          <Button onClick={() => CalcularDescuento(meses)}>Calcular</Button>
         </Form.Item>
         <Form.Item label="Detalles:">
           <Input placeholder="Descuento" disabled />
