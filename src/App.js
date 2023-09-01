@@ -41,6 +41,10 @@ const MainComponent = () => {
         console.log("Precio con descuento", precioFinal);
       }
     });
+
+    //Debug info del usuario
+    console.log('Nombre:',nombre)
+    console.log('Apellido:',apellido)
   };
 
   return (
@@ -58,11 +62,11 @@ const MainComponent = () => {
         }}
       >
         <Form.Item label="Nombre" required>
-          <Input />
+          <Input onChange={(e) => setNombre(e.target.value)}/>
         </Form.Item>
 
         <Form.Item label="Apellido" required>
-          <Input />
+          <Input onChange={(e) => setApellido(e.target.value)}/>
         </Form.Item>
         <Form.Item label="Idioma" required>
           <Select>
