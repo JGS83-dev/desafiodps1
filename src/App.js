@@ -62,6 +62,11 @@ const FormDisabledDemo = () => {
   
         <Form.Item >
           <Button>Submit</Button>
+          
+        </Form.Item>
+        <Form.Item >
+        <Input placeholder='Descuento' disabled/>
+        <Input placeholder='Total a pagar' disabled/>
         </Form.Item>
       </Form>
     </>
