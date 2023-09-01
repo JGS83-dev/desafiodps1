@@ -48,11 +48,7 @@ const MainComponent = () => {
     console.log('Meses:', meses)
     console.log('Descuento:', descuentoAplicado)
   };
-  const preventMinus = (e) => {
-    if (e.code === 'Minus') {
-      e.preventDefault();
-    }
-  };
+  
 
   return (
     <>
