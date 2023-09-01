@@ -77,7 +77,7 @@ const MainComponent = () => {
         </Form.Item>
 
         <Form.Item label="Meses: " required>
-          <InputNumber onChange={(e) => setMeses(e)} />
+          <InputNumber onChange={(e) => setMeses(e)} min='1'/>
         </Form.Item>
 
         <Form.Item label=" ">
