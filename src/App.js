@@ -11,6 +11,7 @@ import {
   Divider,
   Row,
   Space,
+  Typography
 } from "antd";
 
 const MainComponent = () => {
@@ -24,7 +25,7 @@ const MainComponent = () => {
   const [descuentoAplicado, setDescuentoAplicado] = useState(0);
 
   const selectIdiomasDisponibles = ["ingles", "frances"];
-
+  const { Title } = Typography;
   const CalcularDescuento = (mes) => {
     // console.log("Valor enviado:", mes);
     descuentos.forEach((e) => {
@@ -57,7 +58,9 @@ const MainComponent = () => {
 
   return (
     <>
+    
       <Form
+      
         labelCol={{
           span: 12,
         }}
@@ -69,6 +72,10 @@ const MainComponent = () => {
           maxWidth: 900,
         }}
       >
+<Form.Item label=" " >
+<Title>Cursos de Idiomas UDB</Title>
+        </Form.Item>
+
         <Form.Item label="Nombre" required>
           <Input onChange={(e) => setNombre(e.target.value)} />
         </Form.Item>
