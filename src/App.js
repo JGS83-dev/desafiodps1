@@ -1,29 +1,8 @@
-import { PlusOutlined } from '@ant-design/icons';
-import React, { useState } from 'react';
-import { descuentos } from './utils/descuentos';
-import {
-  Button,
-  Cascader,
-  Checkbox,
-  DatePicker,
-  Form,
-  Input,
-  InputNumber,
-  Radio,
-  Select,
-  Slider,
-  Switch,
-  TreeSelect,
-  Upload,
-} from 'antd';
-const { RangePicker } = DatePicker;
-const { TextArea } = Input;
-const normFile = (e) => {
-  if (Array.isArray(e)) {
-    return e;
-  }
-  return e?.fileList;
-};
+import { PlusOutlined } from "@ant-design/icons";
+import React, { useState } from "react";
+import { descuentos } from "./utils/descuentos";
+import { Button, Form, Input, InputNumber, Select } from "antd";
+
 const MainComponent = () => {
   const [componentDisabled, setComponentDisabled] = useState(false);
 
@@ -44,11 +23,8 @@ const MainComponent = () => {
     });
   };
 
-
-
   return (
     <>
-     
       <Form
         labelCol={{
           span: 4,
@@ -61,7 +37,6 @@ const MainComponent = () => {
           maxWidth: 600,
         }}
       >
-      
         <Form.Item label="Nombre">
           <Input />
         </Form.Item>
@@ -78,16 +53,13 @@ const MainComponent = () => {
         <Form.Item label="Meses: ">
           <InputNumber />
         </Form.Item>
-      
-    
-  
-        <Form.Item >
+
+        <Form.Item>
           <Button>Submit</Button>
-          
         </Form.Item>
-        <Form.Item >
-        <Input placeholder='Descuento' disabled/>
-        <Input placeholder='Total a pagar' disabled/>
+        <Form.Item>
+          <Input placeholder="Descuento" disabled />
+          <Input placeholder="Total a pagar" disabled />
         </Form.Item>
       </Form>
     </>
