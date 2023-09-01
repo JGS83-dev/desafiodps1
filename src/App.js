@@ -1,7 +1,7 @@
 import { PlusOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
 import { descuentos } from "./utils/descuentos";
-import { Button, Form, Input, InputNumber, Select } from "antd";
+import { Button, Form, Input, InputNumber, Select, Col, Divider, Row, Space } from "antd";
 
 const MainComponent = () => {
   const [componentDisabled, setComponentDisabled] = useState(false);
@@ -16,17 +16,17 @@ const MainComponent = () => {
 
   const CalcularDescuento = (meses) => {
     descuentos.forEach((e) => {
-      console.log('Limite superior',e.inferior);
-      console.log('Limite inferior',e.inferior);
+      console.log('Limite superior', e.inferior);
+      console.log('Limite inferior', e.inferior);
       if (meses >= e.inferior && meses <= e.superior) {
-        if(e.descuento > 0){
+        if (e.descuento > 0) {
           setDescuentoAplicado(e.descuento)
           setPrecioFinal(25 + 25 * (e.descuento / 100));
-        }else{
+        } else {
           setDescuentoAplicado(0)
           setPrecioFinal(25);
         }
-        console.log('Precio con descuento',precioFinal);
+        console.log('Precio con descuento', precioFinal);
       }
     });
   };
@@ -34,24 +34,28 @@ const MainComponent = () => {
   return (
     <>
       <Form
+
         labelCol={{
-          span: 4,
+          span: 12,
         }}
         wrapperCol={{
-          span: 14,
+          span: 10,
         }}
         layout="horizontal"
         style={{
-          maxWidth: 600,
+          maxWidth: 900,
         }}
       >
-        <Form.Item label="Nombre">
+
+
+        <Form.Item label="Nombre" required>
           <Input />
         </Form.Item>
-        <Form.Item label="Apellido">
+
+        <Form.Item label="Apellido" required>
           <Input />
         </Form.Item>
-        <Form.Item label="Idioma">
+        <Form.Item label="Idioma" required>
           <Select>
             {selectIdiomasDisponibles.forEach((element) => {
               <Select.Option value={element}>{element}</Select.Option>;
@@ -59,14 +63,14 @@ const MainComponent = () => {
           </Select>
         </Form.Item>
 
-        <Form.Item label="Meses: ">
+        <Form.Item label="Meses: " required>
           <InputNumber />
         </Form.Item>
 
-        <Form.Item>
+        <Form.Item label=" ">
           <Button onClick={() => CalcularDescuento(2)}>Calcular</Button>
         </Form.Item>
-        <Form.Item>
+        <Form.Item label="Detalles:">
           <Input placeholder="Descuento" disabled />
           <Input placeholder="Total a pagar" disabled />
         </Form.Item>
